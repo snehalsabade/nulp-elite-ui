@@ -10,6 +10,7 @@ import { extendTheme, NativeBaseProvider } from "native-base";
 // import dotenv from "dotenv";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Registration from "pages/Registration";
+import CardComponent from "./components/CardComponent";
 
 // import { DEFAULT_THEME, initializeI18n } from "@shiksha/common-lib";
 // dotenv.config();
@@ -41,9 +42,16 @@ function App() {
       moduleName: "nulp_elite",
       path: "/User",
       component: User,
-
+    },
+    {
+      moduleName: "nulp_elite",
       path: "/registration",
       component: Registration,
+    },
+    {
+      moduleName: "nulp_elite",
+      path: "/card",
+      component: CardComponent,
     },
   ];
   // const LoginComponent = React.lazy(() => import("core/Login"));
