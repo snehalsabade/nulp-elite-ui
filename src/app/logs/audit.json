@@ -1,0 +1,80 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 10
+    },
+    "auditLog": "/home/ttpl-rt-158/Documents/NULP/GIT/21 Feb/nulp-portal/src/app/logs/audit.json",
+    "files": [
+        {
+            "date": 1708666384808,
+            "name": "/home/ttpl-rt-158/Documents/NULP/GIT/21 Feb/nulp-portal/src/app/logs/app-2024-02-23.log",
+            "hash": "4072c3267a030b66a27a14dd35456a3e4b6e8e9010f1c84a6135349f9d604889"
+        },
+        {
+            "date": 1708666384810,
+            "name": "/home/ttpl-rt-158/Documents/NULP/GIT/21 Feb/nulp-portal/src/app/logs/exceptions-2024-02-23.log",
+            "hash": "18f367fd1bd35e51f59b5527fd4ab217d55a6d914f86f39342317d3528fc5fd0"
+        },
+        {
+            "date": 1708929232001,
+            "name": "/home/ttpl-rt-158/Documents/NULP/GIT/21 Feb/nulp-portal/src/app/logs/app-2024-02-26.log",
+            "hash": "56632754fc737684ec260ee677e614afa541c409e36344d702ac45d938dec3d5"
+        },
+        {
+            "date": 1708929232002,
+            "name": "/home/ttpl-rt-158/Documents/NULP/GIT/21 Feb/nulp-portal/src/app/logs/exceptions-2024-02-26.log",
+            "hash": "e60c9db94fdfc684553de21bd45093994652c4331448f273734d54e76ffacf2e"
+        },
+        {
+            "date": 1709006882686,
+            "name": "/home/ttpl-rt-158/Documents/NULP/GIT/21 Feb/nulp-portal/src/app/logs/app-2024-02-27.log",
+            "hash": "551b54705f3ab8f9c0317baf8816a935518d684a38cf296cc3b909d7a3cbe18d"
+        },
+        {
+            "date": 1709006882687,
+            "name": "/home/ttpl-rt-158/Documents/NULP/GIT/21 Feb/nulp-portal/src/app/logs/exceptions-2024-02-27.log",
+            "hash": "253ec09df87cd2e1ac81919dbe6475289f230d6ec84a5106cf3f6a746d4e6d8a"
+        },
+        {
+            "date": 1709095790296,
+            "name": "/home/ttpl-rt-158/Documents/NULP/GIT/21 Feb/nulp-portal/src/app/logs/app-2024-02-28.log",
+            "hash": "6fa7701c618d824744ea245cdcfe80dad526603fc92776059f110f3ceeb8b149"
+        },
+        {
+            "date": 1709095790297,
+            "name": "/home/ttpl-rt-158/Documents/NULP/GIT/21 Feb/nulp-portal/src/app/logs/exceptions-2024-02-28.log",
+            "hash": "63687d3f14ca5a3fccb65c57af25575b4b5574f872e98b0f76a2a3f9c98c1437"
+        },
+        {
+            "date": 1709179782527,
+            "name": "/home/ttpl-rt-158/Documents/NULP/GIT/21 Feb/nulp-portal/src/app/logs/app-2024-02-29.log",
+            "hash": "87aff3d2a97d96105217137efe8bdbdccec5d937443bd84065816ee9db5508aa"
+        },
+        {
+            "date": 1709179782530,
+            "name": "/home/ttpl-rt-158/Documents/NULP/GIT/21 Feb/nulp-portal/src/app/logs/exceptions-2024-02-29.log",
+            "hash": "bb6252f98c87141a129c76078e1a89e72880d868acf24cefa86694b8f9fdecee"
+        },
+        {
+            "date": 1709266986346,
+            "name": "/home/ttpl-rt-158/Documents/NULP/GIT/21 Feb/nulp-portal/src/app/logs/app-2024-03-01.log",
+            "hash": "83f82773df6234fa80c62b987a7f95b9c93c3fe72fd17634592fb30d4b173f74"
+        },
+        {
+            "date": 1709266986486,
+            "name": "/home/ttpl-rt-158/Documents/NULP/GIT/21 Feb/nulp-portal/src/app/logs/exceptions-2024-03-01.log",
+            "hash": "308962960689051fd70b1feb185f4703cb654f7352e65c1a965edfb69d1cb93b"
+        },
+        {
+            "date": 1709525442828,
+            "name": "/home/ttpl-rt-158/Documents/NULP/GIT/21 Feb/nulp-portal/src/app/logs/app-2024-03-04.log",
+            "hash": "9c8b5739879096c4e4ab717e727b16b5957cfc9d2db32c75c88452acc891f96e"
+        },
+        {
+            "date": 1709525442831,
+            "name": "/home/ttpl-rt-158/Documents/NULP/GIT/21 Feb/nulp-portal/src/app/logs/exceptions-2024-03-04.log",
+            "hash": "9ab7cda61a606016a8c29caa01439a023b619ab27edc4446484ddfb7ffc54796"
+        }
+    ],
+    "hashType": "sha256"
+}

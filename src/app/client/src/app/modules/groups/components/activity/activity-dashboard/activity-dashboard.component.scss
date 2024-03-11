@@ -1,0 +1,7 @@
+@import 'mixins/mixins';
+@import './pages/content-header';
+
+.sb-dashlet-table {
+    z-index: 2;
+    position: relative;
+}

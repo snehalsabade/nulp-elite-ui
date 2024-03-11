@@ -8,6 +8,7 @@ const Home = () => {
       <Heading as="h1" size="2xl" marginBottom="4">
         Welcome to Our Learning Portal
       </Heading>
+
       <Text fontSize="xl" marginBottom="8">
         Enhance your knowledge and skills with our diverse range of courses and
         content.

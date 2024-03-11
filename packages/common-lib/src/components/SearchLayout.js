@@ -21,9 +21,9 @@ export default function SearchLayout({
 
   return (
     <Center>
-      <Box minH={Height} w={width}>
+      <Box w={width}>
         <Stack
-          width={'100%'}
+          width={'90%'}
           style={{
             backgroundImage: imageUrl
               ? 'url(' + imageUrl + ')'
@@ -64,7 +64,7 @@ export default function SearchLayout({
               //     />
               //   </React.Fragment>
               // }
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) =>setSearch(e.target.value)}
               placeholder={
                 searchPlaceholder
                   ? searchPlaceholder
