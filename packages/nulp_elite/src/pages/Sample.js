@@ -16,7 +16,7 @@ import { useTranslation } from "react-i18next";
 import moment from "moment";
 import manifest from "../../src/manifest.json";
 import "ag-grid-community/styles/ag-grid.css";
-import { ChakraProvider, CSSReset, Box, Container, Button } from '@chakra-ui/react';
+import { ChakraProvider, CSSReset, Container } from '@chakra-ui/react';
 import FilterPopup from './../components/FilterPopup';
 
 export default function Sample() {

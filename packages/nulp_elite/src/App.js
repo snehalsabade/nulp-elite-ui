@@ -14,10 +14,10 @@ import { DEFAULT_THEME, initializeI18n,H2, } from "@shiksha/common-lib";
 import { useTranslation } from 'react-i18next'
 import Framework from "pages/Frmework";
 import User from "pages/User";
-import { extendTheme, NativeBaseProvider } from "native-base";
+import { extendTheme } from "native-base";
 // import dotenv from "dotenv";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Registration from "pages/Registration";
+import Profile from "pages/Profile";
 import CardComponent from "./components/CardComponent";
 
 // import { DEFAULT_THEME, initializeI18n } from "@shiksha/common-lib";
