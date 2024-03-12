@@ -37,7 +37,7 @@ export default function SearchLayout({
         >
           <HStack bg='white' space='1' alignItems='center' p='5'>
             <IconByName
-              size='sm'
+              size='20px'
               name='ArrowLeftLineIcon'
               color='button.500'
               onPress={(e) => {

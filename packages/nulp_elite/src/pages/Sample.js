@@ -4,19 +4,13 @@ import { H2, Heading, BodyLarge, Widget } from "@shiksha/common-lib";
 import { Layout, NameTag } from "@shiksha/common-lib";
 import {
   Box,
-  Stack,
-  VStack,
-  Text,
-  HStack,
-  Avatar,
-  Image,
   Button,
 } from "native-base";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
 import manifest from "../../src/manifest.json";
 import "ag-grid-community/styles/ag-grid.css";
-import { ChakraProvider, CSSReset, Container } from '@chakra-ui/react';
+import { Container } from '@chakra-ui/react';
 import FilterPopup from './../components/FilterPopup';
 
 export default function Sample() {
