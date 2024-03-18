@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useFormik } from "formik";
 import { Box } from "@chakra-ui/react";
 import ReactDOM from "react-dom";
@@ -9,6 +9,7 @@ import { Navigate } from "react-router-dom";
 import * as Yup from "yup";
 import { signUpSchema } from "../schemas";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { contentService } from "@shiksha/common-lib";
 
 const DELAY = 1500;
 
@@ -17,6 +18,10 @@ function Registration() {
   const [goToOtp, setGoToOTp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [captchaResponse, setCaptchaResponse] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const reCaptcha = React.createRef();
 
   const formik = useFormik({
     initialValues: {
@@ -55,11 +60,49 @@ function Registration() {
   }, []);
 
   const asyncScriptOnLoad = () => {
+    console.log("ReCAPTCHA", reCaptcha);
     // Your async script onLoad implementation
   };
-
   const handleSubmit = () => {
-    formik.handleSubmit();
+    this.reCaptcha.current, formik.handleSubmit(); // Call handleSubmit function
+    const generateOtp = async (email) => {
+      setIsLoading(true);
+      setError(null);
+
+      const url = `http://localhost:3000/learner/anonymous/otp/v1/generate?${captchaResponse}`;
+      const requestBody = {
+        request: {
+          key: email,
+          type: "email",
+          templateId: "wardLoginOTP",
+        },
+      };
+
+      try {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestBody),
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to generate OTP");
+        }
+
+        const data = await response.json();
+        console.log("OTP response:", data.result); // Assuming the OTP is returned in the 'result' field
+        setData(data.result);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    // Call the generateOtp function with the email address
+    generateOtp("aaa@yopmail.com");
     if (formik.isValid && formik.dirty) {
       setGoToOtp(true);
     }
@@ -74,6 +117,10 @@ function Registration() {
 
   const toggleConfirmPasswordVisibility = () => {
     setShowConfirmPassword(!showConfirmPassword);
+  };
+  const onChange = (value) => {
+    setCaptchaResponse(value);
+    console.log("value", value);
   };
 
   return (
@@ -211,11 +258,12 @@ function Registration() {
                   </Box>
                   {load && (
                     <ReCAPTCHA
+                      ref={reCaptcha}
                       style={{ display: "inline-block" }}
                       theme="dark"
                       size="invisible"
                       sitekey={SITE_KEY}
-                      onChange={() => {}} // Placeholder onChange function
+                      onChange={onChange} // Placeholder onChange function
                       asyncScriptOnLoad={asyncScriptOnLoad}
                     />
                   )}
