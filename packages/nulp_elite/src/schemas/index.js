@@ -9,27 +9,22 @@ export const signUpSchema = Yup.object({
       then: Yup.string().required("Please enter your email"),
       otherwise: Yup.string().notRequired(),
     }),
-  phone: Yup.string()
-    .matches(/^\d{10}$/, "Phone number must be exactly 10 digits")
-    .when("contactMethod", {
-      is: (val) => val === "phone",
-      then: Yup.string().required("Please enter your phone"),
-      otherwise: Yup.string().notRequired(),
-    }),
-
   birthYear: Yup.number()
     .min(1925)
     .max(4)
     .required("Please select your year of birth"),
   password: Yup.string()
-    .min(8)
-    .required(
-      "Your password must contain a minimum of 8 characters. It must include numerals, lower and upper case alphabets and special characters, without any spaces."
-    ),
+    .min(8, "Your password must contain a minimum of 8 characters")
+    .required("Password is required")
+    .matches(/[0-9]/, "It must include numbers")
+    .matches(/[A-Z]/, "It must include capital letter")
+    .matches(/[0-9]/, "It must include small letter")
+    .matches(/[!@#$%^&*(,.{}/?<>)]/),
+
   confirmPassword: Yup.string()
-    .required()
     .oneOf(
-      [Yup.ref("password"), null],
-      "Password must be match with new password"
-    ),
+      [Yup.ref("password")],
+      "Confirm Password be must match with new password"
+    )
+    .required("Confirm Password is required"),
 });
