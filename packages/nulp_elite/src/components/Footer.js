@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 import {
   Box,
   Text,
@@ -6,20 +6,20 @@ import {
   Center,
   Stack,
   Pressable,
-  VStack
-} from 'native-base'
+  VStack,
+} from "native-base";
 // import IconByName from '../IconByName'
 // import { useTranslation } from 'react-i18next'
-import { generatePath, useNavigate } from 'react-router-dom'
+import { generatePath, useNavigate } from "react-router-dom";
 // import { useWindowSize } from '../helper'
 
 export default function Footer({ menues, routeDynamics, ...props }) {
-  const path = window?.location?.pathname.toString()
+  const path = window?.location?.pathname.toString();
   // const { t } = useTranslation()
   // const navigate = useNavigate()
 
   // const [width, Height] = useWindowSize()
-  const footerMenus = menues
+  const footerMenus = menues;
 
   const PressableNew = ({ item, children, ...prop }) => {
     return item?.route ? (
@@ -37,18 +37,18 @@ export default function Footer({ menues, routeDynamics, ...props }) {
       </Pressable>
     ) : (
       <Box {...prop}>{children}</Box>
-    )
-  }
+    );
+  };
 
   return (
     <Stack>
-      <Box flex={1} safeAreaTop position='fixed' bottom='0'>
+      <Box flex={1} safeAreaTop position="fixed" bottom="0">
         <Center flex={1}></Center>
         <HStack
-          pl={'20px'}
-          pr={'20px'}
-          bg='white'
-          alignItems='center'
+          pl={"20px"}
+          pr={"20px"}
+          bg="white"
+          alignItems="center"
           safeAreaBottom
           shadow={6}
         >
@@ -56,15 +56,15 @@ export default function Footer({ menues, routeDynamics, ...props }) {
             <PressableNew
               item={item}
               key={index}
-              cursor='pointer'
-              py='3'
+              cursor="pointer"
+              py="3"
               flex={1}
-              alignItems='center'
+              alignItems="center"
             >
               {Array.isArray(item?.selected) &&
-              (item?.selected?.find((e) => path.startsWith(e) && e !== '/') ||
+              (item?.selected?.find((e) => path.startsWith(e) && e !== "/") ||
                 item.selected.includes(path)) ? (
-                <VStack alignItems='center'>
+                <VStack alignItems="center">
                   {/* <IconByName
                     name={item.icon}
                     isDisabled
@@ -72,12 +72,12 @@ export default function Footer({ menues, routeDynamics, ...props }) {
                     pb='1'
                     color={'primary'}
                   /> */}
-                  <Text fontSize='12' color={'primary'}>
+                  <Text fontSize="12" color={"primary"}>
                     {t(item.title)}
                   </Text>
                 </VStack>
               ) : (
-                <VStack alignItems={'center'}>
+                <VStack alignItems={"center"}>
                   {/* <IconByName
                     name={item.icon}
                     isDisabled
@@ -85,7 +85,7 @@ export default function Footer({ menues, routeDynamics, ...props }) {
                     pb='1'
                     color={'lightGray1'}
                   /> */}
-                  <Text fontSize='12' color={'lightGray1'}>
+                  <Text fontSize="12" color={"lightGray1"}>
                     {t(item.title)}
                   </Text>
                 </VStack>
@@ -95,5 +95,5 @@ export default function Footer({ menues, routeDynamics, ...props }) {
         </HStack>
       </Box>
     </Stack>
-  )
+  );
 }

@@ -283,7 +283,7 @@ export default function IconByName({ _icon, ...props }) {
         />
       )
       break
-      case 'search-line':
+    case 'search-line':
       icon = (
         <IconButton
           {...props}
@@ -1165,7 +1165,7 @@ export default function IconByName({ _icon, ...props }) {
         />
       )
       break
-      case 'AccountCircleLineIcon':
+    case 'AccountCircleLineIcon':
       icon = (
         <IconButton
           {...props}

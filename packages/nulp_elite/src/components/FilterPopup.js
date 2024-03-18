@@ -1,15 +1,15 @@
 // FilterPopup.js
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 import {
-    BodyLarge,
-    capture,
-    FilterButton,
-    IconByName,
-    overrideColorTheme,
-    Layout,
-    Widget,
-  } from "@shiksha/common-lib";
+  BodyLarge,
+  capture,
+  FilterButton,
+  IconByName,
+  overrideColorTheme,
+  Layout,
+  Widget,
+} from "@shiksha/common-lib";
 import { H1, H2 } from "@shiksha/common-lib";
 import { Button, Modal, Text, VStack } from "native-base";
 // import React from "react";
@@ -33,7 +33,6 @@ const FilterPopup = ({ isOpen, onClose, applyFilters }) => {
       ["type"]: "sting",
     };
   });
-  
 
   const handleCheckboxChange = (filter) => {
     setSelectedFilters((prevFilters) => ({
@@ -41,7 +40,7 @@ const FilterPopup = ({ isOpen, onClose, applyFilters }) => {
       [filter]: !prevFilters[filter],
     }));
   };
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const handleApplyFilters = () => {
     applyFilters(selectedFilters);
     onClose();
@@ -59,35 +58,30 @@ const FilterPopup = ({ isOpen, onClose, applyFilters }) => {
     setFilterObject(obejct);
   };
   return (
-   
-<Modal
-safeAreaTop={true}
-isOpen={isOpen} 
-onClose={onClose} 
->
-<Modal.Content
-  maxWidth="1024px"
-  position="fixed"
-  bottom="0"
-  w="92%"
-  mb="69px"
->
- <FilterButton
-        getObject={handleFilter}
-        _box={{ pt: 5, px: 5 }}
-        _actionSheet={{ bg: colors.cardBg }}
-        _button={{ bg: colors.primaryLight, px: "15px", py: "2" }}
-        _filterButton={{
-          rightIcon: "",
-          bg: colors.white,
-          color: colors.primary,
-        }}
-        resetButtonText={t("COLLAPSE")}
-        color={colors.primary}
-        filters={newDefaultInputs}
-      />
-</Modal.Content>
-</Modal>
+    <Modal safeAreaTop={true} isOpen={isOpen} onClose={onClose}>
+      <Modal.Content
+        maxWidth="1024px"
+        position="fixed"
+        bottom="0"
+        w="92%"
+        mb="69px"
+      >
+        <FilterButton
+          getObject={handleFilter}
+          _box={{ pt: 5, px: 5 }}
+          _actionSheet={{ bg: colors.cardBg }}
+          _button={{ bg: colors.primaryLight, px: "15px", py: "2" }}
+          _filterButton={{
+            rightIcon: "",
+            bg: colors.white,
+            color: colors.primary,
+          }}
+          resetButtonText={t("COLLAPSE")}
+          color={colors.primary}
+          filters={newDefaultInputs}
+        />
+      </Modal.Content>
+    </Modal>
   );
 };
 

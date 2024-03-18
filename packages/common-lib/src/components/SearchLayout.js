@@ -64,12 +64,13 @@ export default function SearchLayout({
               //     />
               //   </React.Fragment>
               // }
-              onChange={(e) =>setSearch(e.target.value)}
+              onChange={(e) => setSearch(e.target.value)}
               placeholder={
                 searchPlaceholder
                   ? searchPlaceholder
-                  : `Type ${minStringLenght ? 'min ' + minStringLenght : ''}
-               to search `
+                  : `Type ${
+                      minStringLenght ? 'min ' + minStringLenght : ''
+                    }to search `
               }
             />
           </HStack>

@@ -49,7 +49,7 @@ const UserPrefPopup = () => {
       const headers = {
         "Content-Type": "application/json",
       };
-      const url = `https://nulp.niua.org/api/framework/v1/read/nulp`;
+      const url = `http://localhost:3000/api/framework/v1/read/nulp`;
       try {
         const response = await frameworkService.getFrameworkCategories(
           url,

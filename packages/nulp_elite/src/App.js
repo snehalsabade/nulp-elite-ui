@@ -4,6 +4,7 @@ import Sample from "pages/Sample";
 import Home from "pages/Home";
 import Courses from "pages/Courses";
 import Coursetest from "pages/CourseTest";
+import Search from "pages/Search";
 
 import Contents from "pages/Contents";
 import {
@@ -28,6 +29,8 @@ import UserPrefData from "pages/UserPrefData";
 import { ChakraProvider } from "@chakra-ui/react";
 import Profile from "pages/Profile";
 import SendOtp from "pages/SendOtp";
+import FAQPage from "pages/FAQPage";
+import Certificate from "pages/Certificate";
 
 function App() {
   const [search, setSearch] = React.useState(true);
@@ -64,6 +67,11 @@ function App() {
     },
     {
       moduleName: "nulp_elite",
+      path: "/help",
+      component: FAQPage,
+    },
+    {
+      moduleName: "nulp_elite",
       path: "/framework",
       component: Framework,
     },
@@ -91,6 +99,16 @@ function App() {
       moduleName: "nulp_elite",
       path: "/otp",
       component: SendOtp,
+    },
+    {
+      moduleName: "nulp_elite",
+      path: "/search",
+      component: Search,
+    },
+    {
+      moduleName: "nulp_elite",
+      path: "/certificate",
+      component: Certificate,
     },
   ];
 
