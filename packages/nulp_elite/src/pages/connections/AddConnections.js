@@ -889,19 +889,19 @@ const AddConnections = () => {
                       />
                     </ListItem>
                     {/* <TriggerButton
-                      type="button"
-                      variant="contained"
-                      color="primary"
-                      onClick={() =>
-                        handleAcceptedChatOpen(
-                          item.userId,
-                          "" + item.firstName + item.lastName
-                        )
-                      }
-                      style={{ marginLeft: "90%" }}
-                    >
-                      Open chat
-                    </TriggerButton> */}
+                type="button"
+                variant="contained"
+                color="primary"
+                onClick={() =>
+                  handleAcceptedChatOpen(
+                    item.userId,
+                    "" + item.firstName + item.lastName
+                  )
+                }
+                style={{ marginLeft: "90%" }}
+              >
+                Open chat
+              </TriggerButton> */}
                     <Link
                       href="#"
                       underline="none"
@@ -919,19 +919,22 @@ const AddConnections = () => {
                     <div>
                       <Dialog open={open} onClick={handleCloseModal}>
                         <DialogTitle>{selectedUserName}</DialogTitle>
-                        <TriggerButton
-                          type="button"
-                          variant="contained"
-                          color="primary"
-                          onClick={blockChatInvitation}
-                          style={{ marginLeft: "10px" }}
-                        >
-                          Block User
-                        </TriggerButton>
+                        {/* <TriggerButton
+                              type="button"
+                              variant="contained"
+                              color="primary"
+                              onClick={blockChatInvitation}
+                              style={{ marginLeft: "10px" }}
+                            >
+                              Block User
+                            </TriggerButton> */}
                         <DialogContent dividers>
                           {userChat?.map((msg, index) => (
                             <div
-                              style={{ maxHeight: "300px", overflowY: "auto" }}
+                              style={{
+                                maxHeight: "300px",
+                                overflowY: "auto",
+                              }}
                             >
                               <p
                                 style={{
@@ -974,19 +977,19 @@ const AddConnections = () => {
                     <Divider />
 
                     {/* <ListItem>
-                    <ListItemText
-                      primary="Manisha Kapadnis"
-                      secondary="Learner"
-                    />
-                  </ListItem>
-                  <Divider />
+              <ListItemText
+                primary="Manisha Kapadnis"
+                secondary="Learner"
+              />
+            </ListItem>
+            <Divider />
 
-                  <ListItem>
-                    <ListItemText
-                      primary="Charvi Upadhyay"
-                      secondary="Commissioner"
-                    />
-                  </ListItem> */}
+            <ListItem>
+              <ListItemText
+                primary="Charvi Upadhyay"
+                secondary="Commissioner"
+              />
+            </ListItem> */}
                   </List>
                 ))}
 
