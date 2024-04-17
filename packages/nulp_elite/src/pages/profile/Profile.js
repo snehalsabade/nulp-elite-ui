@@ -20,12 +20,14 @@ import RestoreOutlinedIcon from "@mui/icons-material/RestoreOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import * as util from "../../services/utilService";
 import { useNavigate } from "react-router-dom";
+import UserPrefPopup from "../UserPrefPopup";
 
 const Profile = () => {
   const { t } = useTranslation();
   const [userData, setUserData] = useState(null);
   const progressValue = 60; // Example value, you can set this dynamically based on your progress
   const navigate = useNavigate();
+  const [isPreferenceOpen, setIsPreferenceOpen] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,6 +42,14 @@ const Profile = () => {
         });
         const data = await response.json();
         setUserData(data);
+        localStorage.setItem(
+          "userRootOrgId",
+          data?.result?.response?.rootOrgId
+        );
+        localStorage.setItem(
+          "preference",
+          JSON.stringify(data?.result?.response?.framework)
+        );
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -58,6 +68,19 @@ const Profile = () => {
 
   const handleDownloadCertificateClick = () => {
     navigate("/certificate");
+  };
+
+  const handleChangePreference = (data) => {
+    setIsPreferenceOpen(data);
+  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSelectPreference = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -255,6 +278,7 @@ const Profile = () => {
                   display: "flex",
                   alignItems: "baseline",
                 }}
+                onClick={() => handleChangePreference(true)}
               >
                 <Box
                   style={{
@@ -269,8 +293,17 @@ const Profile = () => {
                   <SettingsOutlinedIcon />
                 </Box>
 
-                <Box style={{ paddingLeft: "20px" }}>
-                  {t("CHANGE_PREFERENCES")}
+                <Box
+                  style={{ paddingLeft: "20px" }}
+                  onClick={handleSelectPreference}
+                >
+                  {t("CHANGE_PREFERENCES")}{" "}
+                  {isModalOpen && (
+                    <UserPrefPopup
+                      isOpen={isModalOpen}
+                      onClose={handleCloseModal}
+                    />
+                  )}
                 </Box>
               </Card>
             </Grid>
@@ -414,6 +447,9 @@ const Profile = () => {
       </Container>
       <FloatingChatIcon />
       <Footer />
+      {isPreferenceOpen && (
+        <UserPrefPopup isPreferenceOpen={isPreferenceOpen} />
+      )}
     </div>
   );
 };
