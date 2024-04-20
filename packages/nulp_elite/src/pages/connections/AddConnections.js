@@ -32,6 +32,11 @@ import Filter from "components/filter";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import { useTranslation } from "react-i18next";
+import Accordion from "@mui/material/Accordion";
+import AccordionActions from "@mui/material/AccordionActions";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 // Define modal styles
 const useStyles = makeStyles((theme) => ({
@@ -636,39 +641,6 @@ const AddConnections = () => {
       setIsLoading(false);
     }
   };
-  // const blockChatInvitation = async (userId) => {
-  //   setIsLoading(true);
-  //   setError(null);
-  //   const requestBody = {
-  //     sender_id: userId,
-  //     receiver_id: loggedInUserId,
-  //     reason: "block reason",
-  //   };
-
-  //   const url = `http://localhost:3000/directConnect/block-user`;
-
-  //   try {
-  //     const response = await fetch(url, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(requestBody),
-  //     });
-  //     if (!response.ok) {
-  //       throw new Error("Failed to block chat");
-  //     }
-
-  //     const responseData = await response.json();
-  //     console.log("blockChatInvitation", responseData.result);
-  //     onMyConnection();
-  //     // getConnections();
-  //   } catch (error) {
-  //     setError(error.message);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
 
   const getUserChat = async (userId) => {
     setIsLoading(true);
@@ -843,144 +815,178 @@ const AddConnections = () => {
                   </Box>
                 )}
 
-              {invitationReceiverByUser &&
-                invitationReceiverByUser?.map((item) => (
-                  <List sx={{}} style={{ color: "gray" }}>
-                    <ListItem>
-                      <ListItemText
-                        primary={`${item.firstName}${
-                          item.lastName ? ` ${item.lastName}` : ""
-                        }`}
-                        secondary="Designation"
-                      />
-                    </ListItem>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "flex-end",
-                        marginTop: "10px",
-                      }}
-                    >
-                      <Link
-                        href="#"
-                        underline="none"
-                        color="primary"
-                        onClick={() => acceptChat(item.userId)}
-                        style={{ marginLeft: "10px" }}
-                      >
-                        <CheckCircleOutlineIcon />
-                      </Link>
-                      <span style={{ margin: "0 5px" }}></span>
-                      <Link
-                        href="#"
-                        underline="none"
-                        color="secondary"
-                        onClick={() => rejectChat(item.userId)}
-                      >
-                        <CancelOutlinedIcon />
-                      </Link>
-                    </div>
-
-                    <Divider />
-                  </List>
-                ))}
-              {invitationAcceptedUsers &&
-                invitationAcceptedUsers?.map((item) => (
-                  <List sx={{}} style={{ color: "green" }}>
-                    <ListItem>
-                      <ListItemText
-                        primary={`${item.firstName}${
-                          item.lastName ? ` ${item.lastName}` : ""
-                        }`}
-                        secondary="Designation"
-                        onClick={() =>
-                          handleAcceptedChatOpen(
-                            item.userId,
-                            `${item.firstName}${
-                              item.lastName ? ` ${item.lastName}` : ""
-                            }`
-                          )
-                        }
-                      />
-                    </ListItem>
-                    <div>
-                      <Dialog open={open} onClick={handleCloseModal}>
-                        <DialogTitle>{selectedUserName}</DialogTitle>
-                        {/* <TriggerButton
-                          type="button"
-                          variant="contained"
-                          color="primary"
-                          onClick={blockChatInvitation}
-                          style={{ marginLeft: "10px" }}
-                        >
-                          Block User
-                        </TriggerButton> */}
-                        <DialogContent dividers>
-                          {userChat?.map((msg, index) => (
-                            <div
-                              style={{ maxHeight: "300px", overflowY: "auto" }}
-                            >
-                              <p
-                                style={{
-                                  marginLeft:
-                                    msg.sender_id === loggedInUserId && "30px",
-                                }}
-                              >
-                                <Typography
-                                  key={index}
-                                  variant="body1"
-                                  style={{ marginBottom: "8px" }}
-                                >
-                                  <strong>{msg?.message}</strong>{" "}
-                                  <span style={{ fontSize: "x-small" }}>
-                                    {new Intl.DateTimeFormat("en-US", {
-                                      year: "numeric",
-                                      month: "2-digit",
-                                      day: "2-digit",
-                                      hour: "numeric",
-                                      minute: "numeric",
-                                      second: "numeric",
-                                      timeZone: "UTC", // Set the time zone if necessary
-                                    }).format(new Date(msg?.timestamp))}
-                                  </span>
-                                </Typography>
-                              </p>
-                            </div>
-                          ))}
-                        </DialogContent>
-                        <DialogActions>
-                          <Button
-                            onClick={handleCloseChatHistoryModal}
-                            color="primary"
-                          >
-                            {t("CLOSE")}
-                          </Button>
-                        </DialogActions>
-                      </Dialog>
-                    </div>
-                    <Divider />
-                  </List>
-                ))}
-
-              {invitationNotAcceptedUsers &&
-                invitationNotAcceptedUsers?.map((item) => (
-                  <List
-                    sx={{}}
-                    style={{ color: "red" }}
-                    onClick={() => userClick(item)}
+              <div>
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1-content"
+                    id="panel1-header"
                   >
-                    <ListItem>
-                      <ListItemText
-                        primary={`${item.firstName}${
-                          item.lastName ? ` ${item.lastName}` : ""
-                        }`}
-                        secondary="Designation"
-                      />
-                    </ListItem>
+                    Received Request
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    {invitationReceiverByUser &&
+                      invitationReceiverByUser.map((item, index) => (
+                        <div key={index}>
+                          <List sx={{}} style={{ color: "gray" }}>
+                            <ListItem>
+                              <ListItemText
+                                primary={`${item.firstName}${
+                                  item.lastName ? ` ${item.lastName}` : ""
+                                }`}
+                                secondary="Designation"
+                              />
+                            </ListItem>
+                            <div
+                              style={{
+                                display: "flex",
+                                justifyContent: "flex-end",
+                                marginTop: "10px",
+                              }}
+                            >
+                              <Link
+                                href="#"
+                                underline="none"
+                                color="primary"
+                                onClick={() => acceptChat(item.userId)}
+                                style={{ marginLeft: "10px" }}
+                              >
+                                <CheckCircleOutlineIcon />
+                              </Link>
+                              <span style={{ margin: "0 5px" }}></span>
+                              <Link
+                                href="#"
+                                underline="none"
+                                color="secondary"
+                                onClick={() => rejectChat(item.userId)}
+                              >
+                                <CancelOutlinedIcon />
+                              </Link>
+                            </div>
+                            <Divider />
+                          </List>
+                        </div>
+                      ))}
+                  </AccordionDetails>
+                </Accordion>
+              </div>
 
-                    <Divider />
-                  </List>
-                ))}
+              <div>
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1-content"
+                    id="panel1-header"
+                  >
+                    Connected user List
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    {invitationAcceptedUsers &&
+                      invitationAcceptedUsers.map((item, index) => (
+                        <div key={index}>
+                          <List sx={{}} style={{ color: "green" }}>
+                            <ListItem
+                              button
+                              onClick={() =>
+                                handleOpenModal(
+                                  item.userId,
+                                  `${item.firstName}${
+                                    item.lastName ? ` ${item.lastName}` : ""
+                                  }`
+                                )
+                              }
+                            >
+                              <ListItemText
+                                primary={`${item.firstName}${
+                                  item.lastName ? ` ${item.lastName}` : ""
+                                }`}
+                                secondary="Designation"
+                              />
+                            </ListItem>
+                            <Divider />
+                          </List>
+                        </div>
+                      ))}
+                  </AccordionDetails>
+                </Accordion>
+
+                <Dialog open={open} onClose={handleCloseModal}>
+                  <DialogTitle>{selectedUserName}</DialogTitle>
+                  <DialogContent dividers>
+                    {userChat?.map((msg, index) => (
+                      <div
+                        key={index}
+                        style={{ maxHeight: "300px", overflowY: "auto" }}
+                      >
+                        <p
+                          style={{
+                            marginLeft:
+                              msg.sender_id === loggedInUserId && "30px",
+                          }}
+                        >
+                          <Typography
+                            variant="body1"
+                            style={{ marginBottom: "8px" }}
+                          >
+                            <strong>{msg?.message}</strong>{" "}
+                            <span style={{ fontSize: "x-small" }}>
+                              {new Intl.DateTimeFormat("en-US", {
+                                year: "numeric",
+                                month: "2-digit",
+                                day: "2-digit",
+                                hour: "numeric",
+                                minute: "numeric",
+                                second: "numeric",
+                                timeZone: "UTC", // Set the time zone if necessary
+                              }).format(new Date(msg?.timestamp))}
+                            </span>
+                          </Typography>
+                        </p>
+                      </div>
+                    ))}
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={handleCloseModal} color="primary">
+                      Close
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+              </div>
+
+              <div>
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1-content"
+                    id="panel1-header"
+                  >
+                    Pending Request
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    {invitationNotAcceptedUsers &&
+                      invitationNotAcceptedUsers.map((item, index) => (
+                        <div key={index}>
+                          <List
+                            sx={{}}
+                            style={{ color: "red" }}
+                            onClick={() => userClick(item)}
+                          >
+                            <ListItem button>
+                              <ListItemText
+                                primary={`${item.firstName}${
+                                  item.lastName ? ` ${item.lastName}` : ""
+                                }`}
+                                secondary="Designation"
+                              />
+                            </ListItem>
+                            <Divider />
+                          </List>
+                        </div>
+                      ))}
+                  </AccordionDetails>
+                </Accordion>
+              </div>
+
               <div>
                 {showChatModal && (
                   <Modal
