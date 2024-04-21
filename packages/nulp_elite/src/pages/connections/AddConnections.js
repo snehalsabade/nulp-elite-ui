@@ -37,6 +37,7 @@ import AccordionActions from "@mui/material/AccordionActions";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Chip from "@mui/material/Chip";
 
 // Define modal styles
 const useStyles = makeStyles((theme) => ({
@@ -979,6 +980,10 @@ const AddConnections = () => {
                                 secondary="Designation"
                               />
                             </ListItem>
+                            <Chip
+                              label="  Pending Request"
+                              style={{ marginRight: "90%" }}
+                            />
                             <Divider />
                           </List>
                         </div>
@@ -986,69 +991,9 @@ const AddConnections = () => {
                   </AccordionDetails>
                 </Accordion>
               </div>
-
-              <div>
-                {showChatModal && (
-                  <Modal
-                    open={showChatModal}
-                    onClose={handleCloseModal}
-                    aria-labelledby="modal-title"
-                    aria-describedby="modal-desc"
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "flex-end",
-                      pt: "10vh",
-                      p: "0",
-                    }}
-                  >
-                    <ModalContent sx={{ width: 400 }} style={{}}>
-                      <div>
-                        <h2>{t("INVITATION_NOT_ACCEPTED")}</h2>
-                        <Button
-                          onClick={(e) => {
-                            setShowChatModal(false);
-                          }}
-                          style={{
-                            background: "#004367",
-                            borderRadius: "10px",
-                            color: "#fff",
-                            padding: "10px 12px",
-                            margin: "0 10px",
-                            fontWeight: "500",
-                            fontSize: "12px",
-                          }}
-                        >
-                          {t("CLOSE")}
-                        </Button>
-                      </div>
-                    </ModalContent>
-                  </Modal>
-                )}
-              </div>
             </TabPanel>
 
-            {/* <TabPanel value="2"> */}
-            {/* <Filter /> */}
-            {/* <Autocomplete
-                disablePortal
-                id="combo-box-demo"
-                sx={{ width: "100%", background: "#fff" }}
-                options={gradeLevels}
-                onChange={handleFilterChange}
-                renderInput={(params) => (
-                  <TextField {...params} label="Filter by Name" />
-                )}
-              /> */}
-
             <TabPanel value="2">
-              {/* <Autocomplete
-                disablePortal
-                id="combo-box-demo"
-                sx={{ width: "100%", background: "#fff" }}
-                renderInput={(params) => (
-                  <TextField {...params} label="Filter by Designation" />
-                )}*/}
               {userSearchData &&
                 userSearchData?.map((item) => (
                   <List
