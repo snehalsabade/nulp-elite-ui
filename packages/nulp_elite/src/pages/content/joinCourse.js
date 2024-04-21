@@ -17,6 +17,8 @@ import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import Grid from "@mui/material/Grid";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import SummarizeOutlinedIcon from "@mui/icons-material/SummarizeOutlined";
+
 
 import data from "../../assets/courseHierarchy.json";
 
@@ -311,7 +313,9 @@ const JoinCourse = () => {
                       {faqIndex.name}
                     </AccordionSummary>
                     {faqIndex.children.map((faqIndexname) => (
-                      <AccordionDetails>
+                      <AccordionDetails style={{paddingLeft:'35px'}}>
+                        <SummarizeOutlinedIcon/> 
+
                         <Link
                           href="#"
                           key={faqIndexname.id}

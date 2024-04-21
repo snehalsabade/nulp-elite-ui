@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react'
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 import Carousel from "react-multi-carousel";
@@ -41,7 +41,7 @@ export default function DomainCarousel({ domains ,onSelectDomain}) {
       
           <Carousel swipeable={false}
           draggable={false}
-          showDots={dotsToShow === domains.length ? true : false} // Show dots only if there are more than 4 items
+          showDots={["mobile"]} // Show dots only if there are more than 4 items
           responsive={responsive}
           ssr={true} // means to render carousel on server-side.
           infinite={true}
@@ -50,12 +50,12 @@ export default function DomainCarousel({ domains ,onSelectDomain}) {
           customTransition="all .5"
           transitionDuration={500}
           containerClass="carousel-container"
-          removeArrowOnDeviceType={["tablet", "mobile"]}
           dotListClass="custom-dot-list-style"
           itemClass="carousel-item-padding-40-px">
                   {domains && domains.map((domain, index) => (
-          <Box  className={`my-class ${isActive ? 'active' : ''}`} onClick={(e) => handleDomainClick(domain.code)}  key={index} orientation="horizontal" size="sm" variant="outlined" style={{display:'flex'}}>
-              <Box style={{background:'#fff',padding:'10px',borderRadius:'10px',height:'45px',width:'45px',border:'solid 1px #E1E1E1'}}>
+
+          <Box  className={`my-class ${isActive ? 'carousel-active-ui' : ''}`} onClick={(e) => handleDomainClick(domain.code)}  key={index} orientation="horizontal" size="sm" variant="outlined" style={{display:'flex'}}>
+              <Box className="imgBorder" style={{background:'#fff',padding:'10px',borderRadius:'10px',height:'45px',width:'45px'}}>
               {/* {(domain.image != undefined) && <img src={require(baseImgUrl+domain.image)}  style={{width:'40px',objectFit:'contain'}} alt={domain.name} />}
                 {(domain.image == undefined)&& <img src={require("../assets/swm.png")}  style={{width:'40px',objectFit:'contain'}} alt={domain.name} />} */}
                 <img src={require("../assets/swm.png")}  style={{width:'40px',objectFit:'contain'}} alt={domain.name} />
@@ -67,7 +67,7 @@ export default function DomainCarousel({ domains ,onSelectDomain}) {
                  ))}
 
           </Carousel>
-          <Box className="leftshade xs-hide"></Box>
+          <Box className="leftshade"></Box>
           <Box className="rightshade"></Box>
 
       

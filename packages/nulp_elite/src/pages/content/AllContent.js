@@ -266,6 +266,7 @@ const AllContent = () => {
         </p>
         <SearchBox onSearch={handleSearch} />
       </Box>
+      <Box sx={{fontWeight:'600',fontSize:'16px',padding:'10px'}}>Filter by popular domain:</Box>
       {domain &&  <DomainCarousel onSelectDomain={handleDomainFilter}  domains={domain}/>}
      
       <Container maxWidth="xxl" role="main" className="container-pb">

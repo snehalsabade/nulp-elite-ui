@@ -1003,8 +1003,7 @@ const AddConnections = () => {
                 userSearchData?.map((item) => (
                   <List
                     key={item.id} // Add key prop to each List element
-                    sx={{}} // Add styling here if needed
-                    style={{ color: "blue" }}
+                    sx={{ fontSize: "14px" }} // Add styling here if needed
                     onClick={() => handleUserClick(item)}
                   >
                     <ListItem>
@@ -1019,7 +1018,11 @@ const AddConnections = () => {
                         underline="none"
                         color="primary"
                         onClick={handleOpen}
-                        style={{ marginLeft: "90%" }}
+                        style={{
+                          fontSize: "14px",
+                          color: "#004367",
+                          fontWeight: "600",
+                        }}
                       >
                         Invite
                       </Link>
@@ -1033,6 +1036,7 @@ const AddConnections = () => {
                   aria-labelledby="modal-title"
                   aria-describedby="modal-desc"
                   open={open}
+                  className="sx-bottom"
                   onClose={() => setOpen(false)}
                   sx={{
                     display: "flex",
@@ -1057,14 +1061,24 @@ const AddConnections = () => {
                       }}
                     >
                       {selectedUser && (
-                        <div style={{ fontSize: "14px", lineHeight: "1.6" }}>
-                          Name Surname: {selectedUser?.firstName}
+                        <div
+                          style={{
+                            fontSize: "16px",
+                            lineHeight: "1.6",
+                            fontWeight: "500",
+                          }}
+                        >
+                          {selectedUser?.firstName}
                           {selectedUser?.lastName}
                         </div>
                       )}
                       {selectedUser && (
                         <div
-                          style={{ fontSize: "12px", paddingBottom: "10px" }}
+                          style={{
+                            fontSize: "15px",
+                            paddingBottom: "10px",
+                            fontWeight: "400",
+                          }}
                         >
                           Designation:
                         </div>
@@ -1109,6 +1123,7 @@ const AddConnections = () => {
                           onChange={handleTextareaChange}
                           placeholder="Enter your text here..."
                           fullWidth
+                          sx={{ fontSize: "13px" }}
                         />
                       </div>
                     )}
@@ -1120,39 +1135,39 @@ const AddConnections = () => {
                         flexDirection: "row",
                       }}
                     >
-                      <Box style={{ width: "50%" }}>
-                        <Button
-                          variant="outlined"
-                          style={{
-                            borderRadius: "10px",
-                            color: "#004367",
-                            padding: "10px 12px",
-                            margin: "0 10px",
-                            fontWeight: "500",
-                            fontSize: "12px",
-                            border: "solid 1px #004367",
-                          }}
-                          onClick={handleClose}
-                        >
-                          Cancel
-                        </Button>
-                      </Box>
-                      <Box style={{ width: "50%" }}>
-                        <Button
-                          style={{
-                            background: "#004367",
-                            borderRadius: "10px",
-                            color: "#fff",
-                            padding: "10px 12px",
-                            margin: "0 10px",
-                            fontWeight: "500",
-                            fontSize: "12px",
-                          }}
-                          onClick={showChat ? handleSendClick : toggleChat}
-                        >
-                          {buttonText}
-                        </Button>
-                      </Box>
+                      <Button
+                        variant="outlined"
+                        style={{
+                          borderRadius: "10px",
+                          color: "#004367",
+                          padding: "10px 12px",
+                          margin: "0 10px",
+                          fontWeight: "500",
+                          fontSize: "12px",
+                          border: "solid 1px #efefea00",
+                          width: "50%",
+                        }}
+                        onClick={handleClose}
+                      >
+                        Cancel
+                      </Button>
+
+                      <Button
+                        style={{
+                          background: "#004367",
+                          borderRadius: "10px",
+                          color: "#fff",
+                          padding: "10px 12px",
+                          margin: "0 10px",
+                          fontWeight: "500",
+                          fontSize: "12px",
+                          border: "solid 1px #004367",
+                          width: "50%",
+                        }}
+                        onClick={showChat ? handleSendClick : toggleChat}
+                      >
+                        {buttonText}
+                      </Button>
                     </Box>
                   </ModalContent>
                 </Modal>
@@ -1163,6 +1178,7 @@ const AddConnections = () => {
                     onClose={handleCloseModal}
                     aria-labelledby="modal-title"
                     aria-describedby="modal-desc"
+                    className="sx-bottom"
                     sx={{
                       display: "flex",
                       justifyContent: "center",
@@ -1171,9 +1187,20 @@ const AddConnections = () => {
                       p: "0",
                     }}
                   >
-                    <ModalContent sx={{ width: 400 }} style={{}}>
-                      <div>
-                        <h2>{t("INVITATION_SEND_SUCCESSFULLY")}</h2>
+                    <ModalContent
+                      sx={{ width: 400, bottom: "30px" }}
+                      style={{}}
+                    >
+                      <div style={{ padding: "10px", textAlign: "center" }}>
+                        <h2
+                          style={{
+                            fontSize: "14px",
+                            textAlign: "center",
+                            padding: "13px",
+                          }}
+                        >
+                          {t("INVITATION_SEND_SUCCESSFULLY")}
+                        </h2>
                         <Button
                           onClick={(e) => {
                             setShowModal(false);
@@ -1186,6 +1213,7 @@ const AddConnections = () => {
                             margin: "0 10px",
                             fontWeight: "500",
                             fontSize: "12px",
+                            width: "40%",
                           }}
                         >
                           {t("CLOSE")}
