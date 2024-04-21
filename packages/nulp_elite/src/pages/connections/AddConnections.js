@@ -709,6 +709,11 @@ const AddConnections = () => {
       if (!response.ok) {
         throw new Error("Failed to send chat");
       }
+      if (userSearchData) {
+        userSearchData.filter((item) => {
+          item.userId !== userId;
+        });
+      }
       setSelectedUser("");
       console.log("sentChatRequest", response);
     } catch (error) {
