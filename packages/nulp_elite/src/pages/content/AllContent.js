@@ -85,12 +85,15 @@ const AllContent = () => {
     // Implement your search logic here
     setSelectedDomain(query);
     console.log("Search query:", selectedDomain);
-    fetchData();
+    // fetchData();
   };
   useEffect(() => {
     fetchData();
     fetchDomains();
   }, []);
+  useEffect(() => {
+    fetchData();
+  }, [selectedDomain]);
 
   const showErrorMessage = (msg) => {
     setToasterMessage(msg);
